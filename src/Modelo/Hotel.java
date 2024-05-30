@@ -12,6 +12,7 @@ public class Hotel {
     private List<Servicio> servicios;
     private List<Evento> eventos;
     
+   
 
    
     public Hotel(String nombre, String direccion, int estrellas, List<Habitacion> habitaciones, RestauranteBarTienda restaurante, List<Servicio> servicios, List<Evento> eventos) {
@@ -66,7 +67,9 @@ public class Hotel {
     }
 
     public List<Servicio> getServicios() {
+         int a=1;
         return servicios;
+        
     }
 
     public void setServicios(List<Servicio> servicios) {
