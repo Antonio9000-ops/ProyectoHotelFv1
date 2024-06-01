@@ -18,6 +18,7 @@ public class Avance1 {
         System.out.println("Este es un avance");
         System.out.println("Voy a fusionar ramas despues ");
         System.out.println("Luego de la fusion");
+        System.out.println("Siguiente commit");
     }
     
 }
