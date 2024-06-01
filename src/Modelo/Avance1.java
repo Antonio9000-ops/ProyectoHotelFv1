@@ -16,6 +16,7 @@ public class Avance1 {
     public static void main(String[] args) {
         // TODO code application logic here
         System.out.println("Este es un avance");
+        System.out.println("Voy a fusionar ramas despues ");
     }
     
 }
