@@ -19,6 +19,12 @@ public class Avance1 {
         System.out.println("Voy a fusionar ramas despues ");
         System.out.println("Luego de la fusion");
         System.out.println("Siguiente commit");
+        
+        
+                System.out.println("mi rama");
+                
+                termine my codic en mi rama
+
     }
-    
+
 }
