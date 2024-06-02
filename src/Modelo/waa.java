@@ -9,6 +9,6 @@ package Modelo;
  * @author penet
  */
 public class waa {
+segu
     oaaaaaaaaaaaaaaaaaaaa
-}asaaa
-aaaaaaaaaaaaaa
+}
