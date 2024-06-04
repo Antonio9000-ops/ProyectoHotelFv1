@@ -5,7 +5,7 @@
 package Modelo;
 
 
-public class Cliente {
+public class Cliente avanzare cliente {
     private String nombre;
     private String apellido;
     private String email;
