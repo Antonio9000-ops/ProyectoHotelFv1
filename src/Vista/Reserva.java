@@ -59,43 +59,43 @@ public class Reserva extends javax.swing.JFrame {
         jLabel3.setText("7.Preferencias Especiales:");
         jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4));
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(260, 530, 230, 30);
+        jLabel3.setBounds(120, 580, 230, 30);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setText("1.Nombre Completo:");
         jLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4));
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(260, 290, 220, 30);
+        jLabel4.setBounds(120, 280, 220, 30);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setText("2.Teléfono de Contacto:");
         jLabel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4));
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(260, 330, 220, 30);
+        jLabel5.setBounds(120, 330, 220, 30);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setText("3.Correo Electronico:");
         jLabel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4));
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(260, 370, 220, 30);
+        jLabel6.setBounds(120, 380, 220, 30);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel7.setText("4.Fecha de Llegada:");
         jLabel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4));
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(260, 410, 220, 30);
+        jLabel7.setBounds(120, 430, 220, 30);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel8.setText("5.Numero de Personas:");
         jLabel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4));
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(260, 450, 220, 30);
+        jLabel8.setBounds(120, 480, 220, 30);
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel9.setText("6.Tipo de Habitación:");
         jLabel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4));
         jPanel1.add(jLabel9);
-        jLabel9.setBounds(260, 490, 220, 30);
+        jLabel9.setBounds(120, 530, 220, 30);
 
         jButton1.setBackground(new java.awt.Color(255, 255, 0));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
