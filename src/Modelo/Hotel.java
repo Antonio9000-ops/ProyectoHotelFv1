@@ -1,7 +1,7 @@
 package Modelo;
 import java.util.ArrayList;
 import java.util.List;
-
+//solo prueba
 // Definición de la clase Hotel
 public class Hotel {
     // Atributos de la clase Hotel
