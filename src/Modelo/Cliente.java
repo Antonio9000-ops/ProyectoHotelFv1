@@ -21,7 +21,9 @@ public class Cliente {
         this.telefono = telefono;
         this.direccion = direccion;
         this.login = login;
-    } 
+    }
+    
+    //Métodos getters y Setter
     
     public String getApellido() {
         return apellido;
