@@ -14,7 +14,8 @@ public class Hotel {
     private List<Cliente> clientes;
     
 
-   
+   // Constructor
+    
     public Hotel(String nombre, String direccion, int estrellas, List<Habitacion> habitaciones, RestauranteBarTienda restaurante, List<Servicio> servicios, List<Evento> eventos) {
         this.nombre = nombre;
         this.direccion = direccion;
