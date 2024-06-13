@@ -37,8 +37,8 @@ public class Main {
         Cliente cliente1 = new Cliente(
                 "Juan",
                 "Perez",
-                "juan.perez@example.com",
-                "123456789",
+                "juan.perez@gmail.com",
+                " 987654321",
                 "Calle Pachacútec 456, San Borja, Lima, Perú",
                 login1,
                 hotel1
