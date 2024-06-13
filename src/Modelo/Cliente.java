@@ -72,6 +72,7 @@ public class Cliente {
         this.hotel = hotel;
     }    
     
+    //Metodos adicionales
     
 
     String getNombre() {
