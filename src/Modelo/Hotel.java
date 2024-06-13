@@ -26,7 +26,8 @@ public class Hotel {
         this.eventos = new ArrayList<>(eventos);
     }
 
-   
+   // Metodos getters y setters 
+    
     public String getNombre() {
         return nombre;
     }
