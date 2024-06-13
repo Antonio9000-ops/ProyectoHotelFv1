@@ -11,6 +11,7 @@ public class Hotel {
     private RestauranteBarTienda restaurante;
     private List<Servicio> servicios;
     private List<Evento> eventos;
+    private List<Cliente> clientes;
     
 
    
