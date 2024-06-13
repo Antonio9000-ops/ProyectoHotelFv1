@@ -12,6 +12,7 @@ public class Cliente {
     private String telefono;
     private String direccion;
     private Login login;
+    private Hotel hotel;
 
     public String getApellido() {
         return apellido;
