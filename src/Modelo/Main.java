@@ -39,7 +39,7 @@ public class Main {
                 "Perez",
                 "juan.perez@example.com",
                 "123456789",
-                "Calle Falsa 123",
+                "Calle Pachacútec 456, San Borja, Lima, Perú",
                 login1,
                 hotel1
         );
