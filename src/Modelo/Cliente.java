@@ -13,7 +13,16 @@ public class Cliente {
     private String direccion;
     private Login login;
     private Hotel hotel;
-
+    
+    public Cliente(String nombre, String apellido, String email, String telefono, String direccion, Login login) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+        this.telefono = telefono;
+        this.direccion = direccion;
+        this.login = login;
+    } 
+    
     public String getApellido() {
         return apellido;
     }
@@ -54,13 +63,7 @@ public class Cliente {
         this.login = login;
     }
 
-    public Cliente(String nombre, String apellido, String email, String telefono, String direccion, Login login) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.email = email;
-        this.telefono = telefono;
-        this.direccion = direccion;
-        this.login = login;
+
     }
     
 
