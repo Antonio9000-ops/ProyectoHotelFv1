@@ -1,9 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Modelo;
-
 
 import java.util.Date;
 
@@ -12,16 +7,16 @@ public class ReservaServicio {
     private String nombreServicio;
     private double costo;
     private Cliente cliente;
+    private String estado; // nuevo atributo para almacenar el estado de la reserva
 
-   
     public ReservaServicio(Date fechaReserva, String nombreServicio, double costo, Cliente cliente) {
         this.fechaReserva = fechaReserva;
         this.nombreServicio = nombreServicio;
         this.costo = costo;
         this.cliente = cliente;
+        this.estado = "Pendiente"; // estado inicial
     }
 
-   
     public Date getFechaReserva() {
         return fechaReserva;
     }
@@ -52,6 +47,24 @@ public class ReservaServicio {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    // Nuevo método para confirmar la reserva
+    public void confirmarReserva() {
+        this.estado = "Confirmado";
+    }
+
+    // Nuevo método para calcular el costo de la reserva
+    public double calcularCosto() {
+        return this.costo;
     }
 }
 

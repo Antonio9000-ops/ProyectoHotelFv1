@@ -120,5 +120,7 @@ public class Hotel {
     public void setRestaurante(RestauranteBarTienda restaurante) {
         this.restaurante = restaurante;
     }
+
+    
 }
 

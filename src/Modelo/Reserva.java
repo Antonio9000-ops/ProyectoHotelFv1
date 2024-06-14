@@ -1,28 +1,65 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Modelo;
-
-
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+// Definición de la clase Reserva
 public class Reserva {
+    // Atributos de la clase Reserva
     private Date fechaInicio;
     private Date fechaFin;
     private int numeroDeHabitacion;
     private String estado;
+    
+    // Relación con la clase Cliente
     private Cliente cliente;
+    
+    // Relación con la clase Empleado
+    private Empleado empleado;
+    
+    // Relación con la clase Pago
+    private List<Pago> pagos;
 
-  
-    public Reserva(Date fechaInicio, Date fechaFin, int numeroDeHabitacion, String estado, Cliente cliente) {
+    // Constructor de la clase Reserva
+    public Reserva(Date fechaInicio, Date fechaFin, int numeroDeHabitacion, String estado, Cliente cliente, Empleado empleado) {
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.numeroDeHabitacion = numeroDeHabitacion;
         this.estado = estado;
         this.cliente = cliente;
+        this.empleado = empleado;
+        this.pagos = new ArrayList<>();
     }
+
+    // Métodos de la clase Reserva
+
+    // Método para crear una reserva
+    public void crearReserva() {
+        // Implementación para crear una reserva
+    }
+
+    // Método para cancelar una reserva
+    public void cancelarReserva() {
+        this.estado = "Cancelada";
+        // Implementación adicional para cancelar una reserva
+    }
+
+    // Método para obtener la lista de reservas
+    public static List<Reserva> obtenerReservas(List<Reserva> reservas) {
+        // Implementación para obtener todas las reservas
+        return reservas;
+    }
+
+    // Métodos adicionales para la relación con pagos
+    public void agregarPago(Pago pago) {
+        pagos.add(pago);
+    }
+
+    public List<Pago> obtenerPagos() {
+        return pagos;
+    }
+
+    // Getters y setters para los atributos de la reserva
 
     public Date getFechaInicio() {
         return fechaInicio;
@@ -64,23 +101,11 @@ public class Reserva {
         this.cliente = cliente;
     }
 
-    // Métodos adicionales
-    public void crearReserva() {
-        // Implementación para crear una nueva reserva
-        System.out.println("Reserva creada para el cliente: " + cliente.getNombre());
+    public Empleado getEmpleado() {
+        return empleado;
     }
 
-    public void cancelarReserva() {
-        // Implementación para cancelar una reserva
-        this.estado = "Cancelada";
-        System.out.println("Reserva cancelada para el cliente: " + cliente.getNombre());
-    }
-
-    public List<Reserva> obtenerReservas() {
-        // Implementación para obtener todas las reservas
-        // Aquí se debe retornar una lista de todas las reservas (esto es solo un ejemplo)
-        return null;
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
     }
 }
-
-
