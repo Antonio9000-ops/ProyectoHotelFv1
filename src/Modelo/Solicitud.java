@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Modelo;
 
 import java.util.Date;
@@ -13,7 +9,6 @@ public class Solicitud {
     private Date fechaSolicitud;
     private String estado;
 
-
     public Solicitud(String tipoSolicitud, Cliente cliente, String descripcion, Date fechaSolicitud, String estado) {
         this.tipoSolicitud = tipoSolicitud;
         this.cliente = cliente;
@@ -22,7 +17,6 @@ public class Solicitud {
         this.estado = estado;
     }
 
-    
     public String getTipoSolicitud() {
         return tipoSolicitud;
     }
@@ -63,4 +57,3 @@ public class Solicitud {
         this.estado = estado;
     }
 }
-

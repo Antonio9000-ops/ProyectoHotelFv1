@@ -1,75 +1,63 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Modelo;
 
 import java.util.ArrayList;
 import java.util.List;
 
+// Definición de la clase Galería
 public class Galeria {
+    // Atributos de la clase Galería
     private List<String> imagenes;
     private List<String> descripciones;
+    
+    // Relación con la clase Hotel
+    private Hotel hotel;
 
-    public Galeria() {
+    // Constructor de la clase Galería
+    public Galeria(Hotel hotel) {
         this.imagenes = new ArrayList<>();
         this.descripciones = new ArrayList<>();
+        this.hotel = hotel;
     }
 
-    
-    public List<String> getImagenes() {
+    // Métodos de la clase Galería
+
+    // Método para agregar una imagen a la galería
+    public void agregarImagen(String imagen, String descripcion) {
+        imagenes.add(imagen);
+        descripciones.add(descripcion);
+    }
+
+    // Método para eliminar una imagen de la galería
+    public void eliminarImagen(String imagen) {
+        int index = imagenes.indexOf(imagen);
+        if (index >= 0) {
+            imagenes.remove(index);
+            descripciones.remove(index);
+        }
+    }
+
+    // Método para obtener la lista de imágenes de la galería
+    public List<String> obtenerImagenes() {
         return imagenes;
     }
 
-    public void setImagenes(List<String> imagenes) {
-        this.imagenes = imagenes;
-    }
-
-    public List<String> getDescripciones() {
+    // Método para obtener la lista de descripciones de las imágenes
+    public List<String> obtenerDescripciones() {
         return descripciones;
     }
 
-    public void setDescripciones(List<String> descripciones) {
-        this.descripciones = descripciones;
+    // Método para enviar una imagen por WhatsApp (funcionalidad simulada)
+    public void whatsapp(String imagen) {
+        // Lógica para enviar la imagen por WhatsApp
+        System.out.println("Enviando la imagen " + imagen + " por WhatsApp...");
     }
 
-    public void agregarImagen(String imagen, String descripcion) {
-        
-        imagenes.add(imagen);
-        descripciones.add(descripcion);
-        System.out.println("Imagen agregada: " + imagen);
-        System.out.println("Descripción agregada: " + descripcion);
+    // Getter y setter para el atributo hotel
+    public Hotel getHotel() {
+        return hotel;
     }
 
-    
-    public void eliminarImagen(String imagen) {
-        
-        int index = imagenes.indexOf(imagen);
-        if (index != -1) {
-            imagenes.remove(index);
-            descripciones.remove(index);
-            System.out.println("Imagen eliminada: " + imagen);
-        } else {
-            System.out.println("Imagen no encontrada: " + imagen);
-        }
-    }
-
-    // Método obtenerImagenes
-    public List<String> obtenerImagenes() {
-        // Lógica para obtener la lista de imágenes
-        System.out.println("Obteniendo lista de imágenes.");
-        return new ArrayList<>(imagenes);
-    }
-
-    // Método obtenerImagenesConDescripcion
-    public List<String> obtenerImagenesConDescripcion() {
-        // Lógica para obtener la lista de imágenes con sus descripciones
-        List<String> imagenesConDescripcion = new ArrayList<>();
-        for (int i = 0; i < imagenes.size(); i++) {
-            imagenesConDescripcion.add(imagenes.get(i) + " - " + descripciones.get(i));
-        }
-        System.out.println("Obteniendo lista de imágenes con descripciones.");
-        return imagenesConDescripcion;
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
     }
 }
-

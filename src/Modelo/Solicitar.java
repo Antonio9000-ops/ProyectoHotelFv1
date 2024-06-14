@@ -1,16 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Modelo;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Solicitar {
     private List<Solicitud> solicitudes;
     
-     public Solicitar() {
+    public Solicitar() {
         this.solicitudes = new ArrayList<>();
     }
 
@@ -22,9 +18,6 @@ public class Solicitar {
         this.solicitudes = solicitudes;
     }
 
-   
-
-    // Métodos adicionales
     public void crearSolicitud(Solicitud solicitud) {
         solicitudes.add(solicitud);
         System.out.println("Solicitud creada para el cliente: " + solicitud.getCliente().getNombre());
@@ -55,5 +48,3 @@ public class Solicitar {
         return solicitudesEstado;
     }
 }
-
-
