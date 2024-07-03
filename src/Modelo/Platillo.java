@@ -5,7 +5,7 @@
 package Modelo;
 
 
-class Platillo {
+public class Platillo {
     private String nombre;
     private String descripcion;
     private double precio;

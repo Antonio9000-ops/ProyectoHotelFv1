@@ -1,28 +1,30 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Modelo;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
 
 public class Evento {
+    // Atributos de la clase Evento
     private String nombre;
-    private String fecha;
+    private Date fecha;
     private String lugar;
     private String descripcion;
-    private List<String> whatsapp;
 
-    public Evento(String nombre, String fecha, String lugar, String descripcion) {
+    // Constructor de la clase Evento
+    public Evento(String nombre, Date fecha, String lugar, String descripcion) {
         this.nombre = nombre;
         this.fecha = fecha;
         this.lugar = lugar;
         this.descripcion = descripcion;
-        this.whatsapp = new ArrayList<>();
     }
 
-    
+    // Métodos de la clase Evento
+
+    // Método para enlazar con Whatsapp (simulado con un print)
+    public void Link(String whatsapp) {
+        System.out.println("Enlace a Whatsapp: " + whatsapp);
+    }
+
+    // Getters y setters para los atributos del evento
+
     public String getNombre() {
         return nombre;
     }
@@ -31,11 +33,11 @@ public class Evento {
         this.nombre = nombre;
     }
 
-    public String getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
@@ -54,29 +56,4 @@ public class Evento {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-
-    public List<String> getWhatsapp() {
-        return whatsapp;
-    }
-
-    public void setWhatsapp(List<String> whatsapp) {
-        this.whatsapp = whatsapp;
-    }
-
-    // Método link
-    public void link(String whatsapp) {
-        
-        this.whatsapp.add(whatsapp);
-        System.out.println("Número de WhatsApp agregado: " + whatsapp);
-    }
-
-    // Método obtenerEventos
-    public List<Evento> obtenerEventos() {
-      
-        List<Evento> eventos = new ArrayList<>();
-        // Se agregarían eventos a la lista 'eventos' desde la base de datos
-        System.out.println("Obteniendo lista de eventos.");
-        return eventos;
-    }
 }
-
