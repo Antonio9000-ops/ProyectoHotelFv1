@@ -4,10 +4,7 @@
  */
 package Modelo;
 
-/**
- *
- * @author Admin
- */
+
 import java.util.ArrayList;
 import java.util.List;
 

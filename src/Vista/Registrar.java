@@ -108,6 +108,12 @@ public class Registrar extends javax.swing.JFrame {
             }
         });
 
+        TextApellido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextApellidoActionPerformed(evt);
+            }
+        });
+
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel6.setText("¿Ya eres miembro?");
 
@@ -145,7 +151,7 @@ public class Registrar extends javax.swing.JFrame {
                                 .addComponent(TextNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE)
                                 .addComponent(TextApellido)
                                 .addComponent(TextDNI)))))
-                .addGap(0, 196, Short.MAX_VALUE))
+                .addGap(0, 183, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,7 +200,7 @@ public class Registrar extends javax.swing.JFrame {
         );
 
         jPanel2.add(jPanel3);
-        jPanel3.setBounds(-1, 0, 1050, 775);
+        jPanel3.setBounds(-1, 0, 1040, 775);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -206,7 +212,7 @@ public class Registrar extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 775, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 70, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -240,7 +246,7 @@ public class Registrar extends javax.swing.JFrame {
                 java.sql.PreparedStatement ps=cn.prepareStatement(Consulta);
                 ps.executeUpdate();
                 limpiar();
-                JOptionPane.showMessageDialog(null, "Datos Guardados");
+                JOptionPane.showMessageDialog(null, "REGISTRO COMPLETADO AHORA SI INICIA SESION");
                 
            }catch (Exception e){
                JOptionPane.showMessageDialog(null, "No se pudo guardar Usuario");
@@ -260,6 +266,10 @@ public class Registrar extends javax.swing.JFrame {
     private void TextNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TextNombreActionPerformed
+
+    private void TextApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextApellidoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextApellidoActionPerformed
 
     /**
      * @param args the command line arguments

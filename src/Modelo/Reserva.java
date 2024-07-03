@@ -8,15 +8,19 @@ package Modelo;
 import java.util.Date;
 import java.util.List;
 
-public class Reserva {
+public class Reserva extends Cliente {
     private Date fechaInicio;
     private Date fechaFin;
     private int numeroDeHabitacion;
     private String estado;
     private Cliente cliente;
 
-  
-    public Reserva(Date fechaInicio, Date fechaFin, int numeroDeHabitacion, String estado, Cliente cliente) {
+    public Reserva(String nombre, String apellido, String email, String telefono, String direccion, Login login) {
+        super(nombre, apellido, email, telefono, direccion, login);
+    }
+
+    public Reserva(Date fechaInicio, Date fechaFin, int numeroDeHabitacion, String estado, Cliente cliente, String nombre, String apellido, String email, String telefono, String direccion, Login login) {
+        super(nombre, apellido, email, telefono, direccion, login);
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.numeroDeHabitacion = numeroDeHabitacion;

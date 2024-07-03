@@ -5,13 +5,22 @@
 package Modelo;
 
 
-public class Cliente avanzare cliente {
+public class Cliente  {
     private String nombre;
     private String apellido;
     private String email;
     private String telefono;
     private String direccion;
     private Login login;
+    
+        public Cliente(String nombre, String apellido, String email, String telefono, String direccion, Login login) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+        this.telefono = telefono;
+        this.direccion = direccion;
+        this.login = login;
+    }
 
     public String getApellido() {
         return apellido;
@@ -53,15 +62,6 @@ public class Cliente avanzare cliente {
         this.login = login;
     }
 
-    public Cliente(String nombre, String apellido, String email, String telefono, String direccion, Login login) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.email = email;
-        this.telefono = telefono;
-        this.direccion = direccion;
-        this.login = login;
-    }
-    
 
     String getNombre() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
