@@ -19,8 +19,8 @@ public class ReservaCuarto extends javax.swing.JDialog {
     /**
      * Creates new form fm_Reservarcuarto
      */
-    public ReservaCuarto(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public ReservaCuarto() {
+       
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -276,13 +276,13 @@ public class ReservaCuarto extends javax.swing.JDialog {
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(101, 101, 101)
+                .addGap(43, 43, 43)
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton3)
-                .addGap(98, 98, 98)
+                .addGap(102, 102, 102)
                 .addComponent(jButton1)
-                .addGap(51, 51, 51))
+                .addGap(31, 31, 31))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -302,14 +302,18 @@ public class ReservaCuarto extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      detallesDeReserva detalles = new detallesDeReserva(this, false); // Cambia true a false para que no sea modal
-    detalles.setVisible(true);
-    setLocationRelativeTo(null);
+      detallesDeReserva detalles = new detallesDeReserva(); // true para que sea modal
+        detalles.setVisible(true);
+        this.dispose(); // Cierra la ventana actual
    
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+         InicioHome inicioHome = new InicioHome();
+        inicioHome.setVisible(true);
+        inicioHome.setLocationRelativeTo(null);
+        this.dispose(); // Cierra la ventana actual
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void formComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentHidden

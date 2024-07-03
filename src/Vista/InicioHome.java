@@ -190,8 +190,10 @@ public class InicioHome extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-    ReservaCuarto reservaCuarto = new ReservaCuarto(this, true); // Crear instancia de ReservaCuarto
-    reservaCuarto.setVisible(true); // Hacer visible la ventana de ReservaCuarto
+    ReservaCuarto reservaCuarto = new ReservaCuarto();
+    reservaCuarto.setVisible(true);
+    reservaCuarto.setLocationRelativeTo(null);
+    this.dispose(); // Cierra la ventana actual
       
     }//GEN-LAST:event_jButton3ActionPerformed
 

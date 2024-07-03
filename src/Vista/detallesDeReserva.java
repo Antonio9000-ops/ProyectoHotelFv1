@@ -13,11 +13,11 @@ public class detallesDeReserva extends javax.swing.JFrame {
     /**
      * Creates new form detallesDeReserva
      */
-    public detallesDeReserva(ReservaCuarto aThis, boolean par) {
+    public detallesDeReserva() {
         initComponents();
         setLocationRelativeTo(null); 
         this.setVisible(false);
-        aThis.setVisible(false);
+        
     }
 
     /**
