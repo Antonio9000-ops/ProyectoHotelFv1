@@ -183,13 +183,14 @@ public class InicioHome extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-eventos eventos = new eventos(); // Cambia true a false para que no sea modal
+    eventos eventos = new eventos();
     eventos.setVisible(true);
-    setLocationRelativeTo(null);        
+    eventos.setLocationRelativeTo(null); // Centrar la nueva ventana en la pantalla
+    this.dispose(); // Cierra la ventana actual      
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
- ReservaCuarto reservaCuarto = new ReservaCuarto(this, true); // Crear instancia de ReservaCuarto
+    ReservaCuarto reservaCuarto = new ReservaCuarto(this, true); // Crear instancia de ReservaCuarto
     reservaCuarto.setVisible(true); // Hacer visible la ventana de ReservaCuarto
       
     }//GEN-LAST:event_jButton3ActionPerformed

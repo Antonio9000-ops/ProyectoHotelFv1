@@ -61,7 +61,7 @@
                       <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" pref="135" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="379" max="32767" attributes="0"/>
+                  <EmptySpace pref="376" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -90,11 +90,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="CONSULTAR POR WHATSAPP"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton2">
           <Properties>
             <Property name="text" type="java.lang.String" value="MENU PRINCIPAL"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

@@ -253,37 +253,14 @@ public class InicioHotel extends javax.swing.JFrame {
     }//GEN-LAST:event_TextCorreoActionPerformed
 
     private void BotonIngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonIngresarMouseClicked
-        
-        String correo = "administrador";
-        String contraseña = "12345";
-
-        String user;
-        String pass;
-
-user = TextCorreo.getText();
-pass = TextContraseña.getText();
-
-if (correo.equals(user) && contraseña.equals(pass)) {
-    System.out.println("Inicio de sesión exitoso");
-    InicioHome P1=new InicioHome();
-    P1.setVisible(true);
-dispose();
-}
-
-
-else {
-    System.out.println("Usuario o contraseña incorrectos");
-    JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos");
-}
-
-
-        
+            
     }//GEN-LAST:event_BotonIngresarMouseClicked
 
     private void BOTON_ADMIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BOTON_ADMIActionPerformed
     admi_inicia_sesion admi = new admi_inicia_sesion (); // Cambia true a false para que no sea modal
     admi.setVisible(true);
     setLocationRelativeTo(null);
+    this.dispose();
     }//GEN-LAST:event_BOTON_ADMIActionPerformed
 
    
