@@ -14,6 +14,6 @@ public class Inicio_vista {
      public static void main(String[] args) {
         // Crear una instancia de InicioVista y hacerla visible
         InicioHotel ventana = new InicioHotel();
-        ventana.setVisible(true);
+        ventana.setVisible(true);;
     }
 }

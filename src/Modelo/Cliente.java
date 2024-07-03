@@ -3,6 +3,7 @@ package Modelo;
 import java.util.ArrayList;
 import java.util.List;
 
+
 // Definición de la clase Cliente
 public class Cliente {
     // Atributos de la clase Cliente
