@@ -56,6 +56,12 @@ public class admi_inicia_sesion extends javax.swing.JFrame {
             }
         });
 
+        password.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -126,6 +132,10 @@ public class admi_inicia_sesion extends javax.swing.JFrame {
     JOptionPane.showMessageDialog(null, "contraseña incorrecta");
 }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passwordActionPerformed
 
     
 

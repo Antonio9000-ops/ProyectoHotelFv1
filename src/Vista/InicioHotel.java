@@ -8,6 +8,8 @@ import javax.swing.JFrame;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
 import com.mysql.jdbc.PreparedStatement;
+
+import java.sql.ResultSet;
 /**
  *
  * @author Admin
@@ -20,7 +22,7 @@ public class InicioHotel extends javax.swing.JFrame {
         
         
         initComponents();
-        setTitle("Hotel V1");
+        setTitle("Hotel V3");
         setSize(1039, 775);
         
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -40,10 +42,10 @@ public class InicioHotel extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        CorreoText = new javax.swing.JTextField();
+        TextCorreo = new javax.swing.JTextField();
         BotonRegistrarse = new javax.swing.JButton();
         BotonIngresar = new javax.swing.JButton();
-        Pass = new javax.swing.JPasswordField();
+        TextContraseña = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1039, 775));
@@ -109,9 +111,9 @@ public class InicioHotel extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel3.setText("CONTRASEÑA");
 
-        CorreoText.addActionListener(new java.awt.event.ActionListener() {
+        TextCorreo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CorreoTextActionPerformed(evt);
+                TextCorreoActionPerformed(evt);
             }
         });
 
@@ -148,8 +150,8 @@ public class InicioHotel extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jLabel2)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(CorreoText, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(Pass, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(TextCorreo, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(TextContraseña, javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
                             .addComponent(BotonIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
@@ -168,11 +170,11 @@ public class InicioHotel extends javax.swing.JFrame {
                 .addGap(81, 81, 81)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(CorreoText, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TextCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(jLabel3)
                 .addGap(40, 40, 40)
-                .addComponent(Pass, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TextContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotonRegistrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -212,13 +214,44 @@ public class InicioHotel extends javax.swing.JFrame {
 
     private void BotonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonIngresarActionPerformed
         // TODO add your handling code here:
-      
+         String correo = TextCorreo.getText();
+    String contraseña = TextContraseña.getText();
+    
+    if(correo.isEmpty() || contraseña.isEmpty()){
+        JOptionPane.showMessageDialog(null, "Debe completar los datos");
+    } else {
+        try {
+            // Establecer la conexión a la base de datos
+            ConectionMysql conexion = new ConectionMysql();
+            Connection cn = conexion.conectar();
+            
+            // Consulta SQL para verificar las credenciales del usuario
+            String consulta = "SELECT * FROM usuarios WHERE Correo = ? AND Contraseña = ?";
+            PreparedStatement ps = (PreparedStatement) cn.prepareStatement(consulta);
+            ps.setString(1, correo);
+            ps.setString(2, contraseña);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next()) {
+                // Credenciales correctas, abrir la ventana InicioHome
+                InicioHome home = new InicioHome();
+                home.setVisible(true);
+                this.dispose(); // Cierra la ventana actual
+            } else {
+                // Credenciales incorrectas
+                JOptionPane.showMessageDialog(null, "Correo o contraseña incorrectos");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos");
+        }
+        }
         
     }//GEN-LAST:event_BotonIngresarActionPerformed
 
-    private void CorreoTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CorreoTextActionPerformed
+    private void TextCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextCorreoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CorreoTextActionPerformed
+    }//GEN-LAST:event_TextCorreoActionPerformed
 
     private void BotonIngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonIngresarMouseClicked
         
@@ -228,8 +261,8 @@ public class InicioHotel extends javax.swing.JFrame {
         String user;
         String pass;
 
-user = CorreoText.getText();
-pass = Pass.getText();
+user = TextCorreo.getText();
+pass = TextContraseña.getText();
 
 if (correo.equals(user) && contraseña.equals(pass)) {
     System.out.println("Inicio de sesión exitoso");
@@ -259,8 +292,8 @@ else {
     private javax.swing.JButton BOTON_ADMI;
     private javax.swing.JButton BotonIngresar;
     private javax.swing.JButton BotonRegistrarse;
-    private javax.swing.JTextField CorreoText;
-    private javax.swing.JPasswordField Pass;
+    private javax.swing.JPasswordField TextContraseña;
+    private javax.swing.JTextField TextCorreo;
     private javax.swing.JPanel fondoIngreso;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -102,6 +102,12 @@ public class Registrar extends javax.swing.JFrame {
             }
         });
 
+        TextCorreo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextCorreoActionPerformed(evt);
+            }
+        });
+
         TextNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextNombreActionPerformed(evt);
@@ -270,6 +276,10 @@ public class Registrar extends javax.swing.JFrame {
     private void TextApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextApellidoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TextApellidoActionPerformed
+
+    private void TextCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextCorreoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextCorreoActionPerformed
 
     /**
      * @param args the command line arguments
