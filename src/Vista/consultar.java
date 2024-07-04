@@ -10,11 +10,10 @@ package Vista;
  */
 public class consultar extends javax.swing.JFrame {
 
-    /**
-     * Creates new form consultar
-     */
+  
     public consultar() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

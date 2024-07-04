@@ -9,6 +9,17 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import Controlador.ReservaControlador;
+import Modelo.Reserva;
+import Modelo.Cliente;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Date;
+import Conection.ConectionMysql;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,18 +30,67 @@ public class ReservaCuarto extends javax.swing.JDialog {
     /**
      * Creates new form fm_Reservarcuarto
      */
+    
+    private ReservaControlador reservaControlador;
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    
+    
+    
     public ReservaCuarto() {
        
         initComponents();
         setLocationRelativeTo(null);
+        init(); // Inicializar el controlador aquí
+        configureEvents();
+    }
+    private void init() {
+        reservaControlador = new ReservaControlador(new Reserva());
+    }
+
+    private void configureEvents() {
+        NombreCompletoTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NombreCompletoTxtActionPerformed(evt);
+            }
+        });
+
+        TelefonoTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TelefonoTxtActionPerformed(evt);
+            }
+        });
+
+        CorreoTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CorreoTxtActionPerformed(evt);
+            }
+        });
+
+        FechaLLegadaTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FechaLLegadaTxtActionPerformed(evt);
+            }
+        });
+
+        FechaSalidaTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FechaSalidaTxtActionPerformed(evt);
+            }
+        });
+
+        NumeroPersonaTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NumeroPersonaTxtActionPerformed(evt);
+            }
+        });
     }
     
 
     public ReservaCuarto(JButton jButton1, JButton jButton2, JButton jButton3, JComboBox<String> jComboBox1, JLabel jLabel1, JLabel jLabel2, JLabel jLabel3, JLabel jLabel4, JLabel jLabel5, JLabel jLabel6, JLabel jLabel7, JLabel jLabel8, JPanel jPanel1, JPanel jPanel2, JTextField jTextField10, JTextField jTextField11, JTextField jTextField12, JTextField jTextField7, JTextField jTextField8, JTextField jTextField9) {
         this.jButton1 = jButton1;
         this.jButton2 = jButton2;
-        this.jButton3 = jButton3;
-        this.jComboBox1 = jComboBox1;
+        this.guardarReserva = jButton3;
+        this.BoxHabitacion = jComboBox1;
         this.jLabel1 = jLabel1;
         this.jLabel2 = jLabel2;
         this.jLabel3 = jLabel3;
@@ -41,13 +101,36 @@ public class ReservaCuarto extends javax.swing.JDialog {
         this.jLabel8 = jLabel8;
         this.jPanel1 = jPanel1;
         this.jPanel2 = jPanel2;
-        this.jTextField10 = jTextField10;
-        this.jTextField11 = jTextField11;
-        this.jTextField12 = jTextField12;
-        this.jTextField7 = jTextField7;
-        this.jTextField8 = jTextField8;
-        this.jTextField9 = jTextField9;
+        this.FechaLLegadaTxt = jTextField10;
+        this.NumeroPersonaTxt = jTextField11;
+        this.FechaSalidaTxt = jTextField12;
+        this.NombreCompletoTxt = jTextField7;
+        this.TelefonoTxt = jTextField8;
+        this.CorreoTxt = jTextField9;
+       
     }
+    private void guardarReserva(String nombre, String telefono, String email, Date fechaLlegada, Date fechaSalida, int numeroPersonas) {
+    ConectionMysql con = new ConectionMysql();
+    Connection cn = con.conectar();
+    
+    String sql = "INSERT INTO reservas (nombre, telefono, correo, fecha_llegada, fecha_salida, numero_personas) VALUES (?, ?, ?, ?, ?, ?)";
+    
+    try (PreparedStatement pst = cn.prepareStatement(sql)) {
+        pst.setString(1, nombre);
+        pst.setString(2, telefono);
+        pst.setString(3, email);
+        pst.setDate(4, new java.sql.Date(fechaLlegada.getTime()));
+        pst.setDate(5, new java.sql.Date(fechaSalida.getTime()));
+        pst.setInt(6, numeroPersonas);
+        
+        pst.executeUpdate();
+        System.out.println("Reserva guardada en la base de datos");
+    } catch (SQLException e) {
+        System.out.println("Error al guardar la reserva: " + e.getMessage());
+    }
+}
+
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -68,16 +151,16 @@ public class ReservaCuarto extends javax.swing.JDialog {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
-        jTextField11 = new javax.swing.JTextField();
-        jTextField12 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        NombreCompletoTxt = new javax.swing.JTextField();
+        TelefonoTxt = new javax.swing.JTextField();
+        CorreoTxt = new javax.swing.JTextField();
+        FechaLLegadaTxt = new javax.swing.JTextField();
+        NumeroPersonaTxt = new javax.swing.JTextField();
+        FechaSalidaTxt = new javax.swing.JTextField();
+        BoxHabitacion = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        guardarReserva = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(null);
@@ -134,40 +217,55 @@ public class ReservaCuarto extends javax.swing.JDialog {
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel8.setText("tipos de habitacion:");
 
-        jTextField7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        NombreCompletoTxt.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        NombreCompletoTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                NombreCompletoTxtActionPerformed(evt);
             }
         });
 
-        jTextField8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-
-        jTextField9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField9.addActionListener(new java.awt.event.ActionListener() {
+        TelefonoTxt.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        TelefonoTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField9ActionPerformed(evt);
+                TelefonoTxtActionPerformed(evt);
             }
         });
 
-        jTextField10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-
-        jTextField11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField11.addActionListener(new java.awt.event.ActionListener() {
+        CorreoTxt.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        CorreoTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField11ActionPerformed(evt);
+                CorreoTxtActionPerformed(evt);
             }
         });
 
-        jTextField12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField12.addActionListener(new java.awt.event.ActionListener() {
+        FechaLLegadaTxt.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        FechaLLegadaTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField12ActionPerformed(evt);
+                FechaLLegadaTxtActionPerformed(evt);
             }
         });
 
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "simple", "matrimonial", "suit" }));
+        NumeroPersonaTxt.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        NumeroPersonaTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NumeroPersonaTxtActionPerformed(evt);
+            }
+        });
+
+        FechaSalidaTxt.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        FechaSalidaTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FechaSalidaTxtActionPerformed(evt);
+            }
+        });
+
+        BoxHabitacion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        BoxHabitacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "simple", "matrimonial", "suit" }));
+        BoxHabitacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BoxHabitacionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -196,23 +294,23 @@ public class ReservaCuarto extends javax.swing.JDialog {
                                             .addGroup(jPanel2Layout.createSequentialGroup()
                                                 .addComponent(jLabel5)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(FechaLLegadaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addComponent(jLabel6))
                                         .addGap(18, 18, 18)))
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(CorreoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jTextField8, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
-                                        .addComponent(jTextField7))
-                                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(TelefonoTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
+                                        .addComponent(NombreCompletoTxt))
+                                    .addComponent(NumeroPersonaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(77, 77, 77)
-                                .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(FechaSalidaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BoxHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -221,29 +319,29 @@ public class ReservaCuarto extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(NombreCompletoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TelefonoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CorreoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(40, 40, 40)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jLabel7)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(FechaLLegadaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FechaSalidaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(NumeroPersonaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(48, 48, 48)
                 .addComponent(jLabel8)
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BoxHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(180, Short.MAX_VALUE))
         );
 
@@ -263,8 +361,13 @@ public class ReservaCuarto extends javax.swing.JDialog {
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton3.setText("GUARDAR");
+        guardarReserva.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        guardarReserva.setText("GUARDAR");
+        guardarReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardarReservaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -279,7 +382,7 @@ public class ReservaCuarto extends javax.swing.JDialog {
                 .addGap(43, 43, 43)
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addComponent(guardarReserva)
                 .addGap(102, 102, 102)
                 .addComponent(jButton1)
                 .addGap(31, 31, 31))
@@ -293,7 +396,7 @@ public class ReservaCuarto extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton3)
+                    .addComponent(guardarReserva)
                     .addComponent(jButton2))
                 .addGap(52, 52, 52))
         );
@@ -320,21 +423,118 @@ public class ReservaCuarto extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_formComponentHidden
 
-    private void jTextField12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField12ActionPerformed
+    private void FechaSalidaTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FechaSalidaTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField12ActionPerformed
+        String fechaSalidaStr = FechaSalidaTxt.getText();
+        try {
+            Date fechaSalida = dateFormat.parse(fechaSalidaStr);
+            reservaControlador.setFechaFin(fechaSalida);
+        } catch (ParseException e) {
+            JOptionPane.showMessageDialog(this, "La fecha de salida debe estar en el formato YYYY-MM-DD.", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+        }
 
-    private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField11ActionPerformed
+    }//GEN-LAST:event_FechaSalidaTxtActionPerformed
 
-    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
+    private void NumeroPersonaTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NumeroPersonaTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField9ActionPerformed
+        String numeroPersonasStr = NumeroPersonaTxt.getText();
+        if (!numeroPersonasStr.matches("\\d+")) {
+            JOptionPane.showMessageDialog(this, "El número de personas debe contener solo números.", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+        } else {
+            int numeroPersonas = Integer.parseInt(numeroPersonasStr);
+            if (numeroPersonas <= 0) {
+                JOptionPane.showMessageDialog(this, "El número de personas debe ser mayor a cero.", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+            } else {
+                reservaControlador.setNumeroDeHabitacion(numeroPersonas);
+            }
+        }
+    }//GEN-LAST:event_NumeroPersonaTxtActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void CorreoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CorreoTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+         String correo = CorreoTxt.getText();
+        if (!correo.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
+            JOptionPane.showMessageDialog(this, "El correo electrónico no es válido.", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+        } else {
+            Cliente cliente = reservaControlador.getCliente();
+            if (cliente == null) {
+                cliente = new Cliente();
+            }
+            cliente.setEmail(correo);
+            reservaControlador.setCliente(cliente);
+        }
+    }//GEN-LAST:event_CorreoTxtActionPerformed
+
+    private void NombreCompletoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreCompletoTxtActionPerformed
+        // TODO add your handling code here:
+       String nombre = NombreCompletoTxt.getText();
+        if (nombre.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El nombre completo no puede estar vacío.", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+        } else {
+            Cliente cliente = reservaControlador.getCliente();
+            if (cliente == null) {
+                cliente = new Cliente();
+            }
+            cliente.setNombre(nombre);
+            reservaControlador.setCliente(cliente);
+        }
+    }//GEN-LAST:event_NombreCompletoTxtActionPerformed
+
+    private void BoxHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BoxHabitacionActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_BoxHabitacionActionPerformed
+
+    private void TelefonoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TelefonoTxtActionPerformed
+        // TODO add your handling code here:
+        String telefono = TelefonoTxt.getText();
+        if (!telefono.matches("\\d+")) {
+            JOptionPane.showMessageDialog(this, "El teléfono debe contener solo números.", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+        } else {
+            Cliente cliente = reservaControlador.getCliente();
+            if (cliente == null) {
+                cliente = new Cliente();
+            }
+            cliente.setTelefono(telefono);
+            reservaControlador.setCliente(cliente);
+        }
+    }//GEN-LAST:event_TelefonoTxtActionPerformed
+
+    private void FechaLLegadaTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FechaLLegadaTxtActionPerformed
+        // TODO add your handling code here:
+        String fechaLlegadaStr = FechaLLegadaTxt.getText();
+        try {
+            Date fechaLlegada = dateFormat.parse(fechaLlegadaStr);
+            reservaControlador.setFechaInicio(fechaLlegada);
+        } catch (ParseException e) {
+            JOptionPane.showMessageDialog(this, "La fecha de llegada debe estar en el formato YYYY-MM-DD.", "Error de Validación", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_FechaLLegadaTxtActionPerformed
+
+    private void guardarReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarReservaActionPerformed
+        // TODO add your handling code here:
+        String nombre = NombreCompletoTxt.getText();
+        String telefono = TelefonoTxt.getText();
+        String correo = CorreoTxt.getText();
+        Date fechaLlegada = java.sql.Date.valueOf(FechaLLegadaTxt.getText()); // Asegúrate de que el formato de fecha sea correcto
+        Date fechaSalida = java.sql.Date.valueOf(FechaSalidaTxt.getText());
+        int numeroPersonas = Integer.parseInt(NumeroPersonaTxt.getText());
+    
+        // Crear un nuevo objeto Cliente (debes tener la clase Cliente implementada)
+        Cliente cliente = new Cliente(nombre, telefono, correo);
+    
+    // Crear un nuevo objeto Reserva y su controlador
+        Reserva reserva = new Reserva(fechaLlegada, fechaSalida, numeroPersonas, "Pendiente", cliente, null);
+        ReservaControlador controlador = new ReservaControlador(reserva);
+    
+    // Llamar al método para crear la reserva
+        controlador.crearReserva();
+    
+    // Guardar la reserva en la base de datos
+        guardarReserva(nombre, telefono, correo, fechaLlegada, fechaSalida, numeroPersonas);
+        
+        
+    }//GEN-LAST:event_guardarReservaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -342,10 +542,16 @@ public class ReservaCuarto extends javax.swing.JDialog {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> BoxHabitacion;
+    private javax.swing.JTextField CorreoTxt;
+    private javax.swing.JTextField FechaLLegadaTxt;
+    private javax.swing.JTextField FechaSalidaTxt;
+    private javax.swing.JTextField NombreCompletoTxt;
+    private javax.swing.JTextField NumeroPersonaTxt;
+    private javax.swing.JTextField TelefonoTxt;
+    private javax.swing.JButton guardarReserva;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -356,11 +562,5 @@ public class ReservaCuarto extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }

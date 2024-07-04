@@ -19,6 +19,9 @@ public class Reserva {
     
     // Relación con la clase Pago
     private List<Pago> pagos;
+    public Reserva() {
+        this.pagos = new ArrayList<>();
+    }
 
     // Constructor de la clase Reserva
     public Reserva(Date fechaInicio, Date fechaFin, int numeroDeHabitacion, String estado, Cliente cliente, Empleado empleado) {

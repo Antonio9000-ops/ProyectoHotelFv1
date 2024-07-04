@@ -3,12 +3,10 @@ package Modelo;
 import java.util.ArrayList;
 import java.util.List;
 
-
 // Definición de la clase Cliente
 public class Cliente {
-    // Atributos de la clase Cliente
     private String nombre;
-    private String apellido; // Nuevo atributo
+    private String apellido;
     private String direccion;
     private String telefono;
     private String email;
@@ -20,6 +18,9 @@ public class Cliente {
     private List<Pago> pagos;
     private List<Reporte> reportes;
     private List<Empleado> empleados;
+
+    // Constructor vacío para crear un cliente sin parámetros
+    public Cliente() {}
 
     // Constructor de la clase Cliente
     public Cliente(String nombre, String apellido, String direccion, String telefono, String email, Login login, Hotel hotel) {
@@ -36,6 +37,19 @@ public class Cliente {
         this.pagos = new ArrayList<>();
         this.reportes = new ArrayList<>();
         this.empleados = new ArrayList<>();
+    }
+    // Constructor básico para casos donde solo se tienen los datos esenciales
+    public Cliente(String nombre, String telefono, String email) {
+    this.nombre = nombre;
+    this.telefono = telefono;
+    this.email = email;
+    // Inicializa otros atributos como sea necesario
+    this.reservasHabitacion = new ArrayList<>();
+    this.reservasServicio = new ArrayList<>();
+    this.solicitudes = new Solicitar();
+    this.pagos = new ArrayList<>();
+    this.reportes = new ArrayList<>();
+    this.empleados = new ArrayList<>();
     }
 
     // Métodos de la clase Cliente
