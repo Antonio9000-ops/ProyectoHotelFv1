@@ -1,8 +1,21 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package Vista;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import Controlador.SolicitudControlador;
+import Modelo.Solicitud;
+import Modelo.Cliente;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Date;
+import Conection.ConectionMysql;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,10 +26,65 @@ public class solicitudes_en_el_hotel extends javax.swing.JFrame {
     /**
      * Creates new form solicitudes_en_el_hotel
      */
+    private SolicitudControlador solicitudControlador;
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     public solicitudes_en_el_hotel() {
         initComponents();
         setLocationRelativeTo(null);
     }
+   
+    
+    private void guardarSolicitudEnBD(SolicitudControlador controlador) {
+    Connection cn = null;
+    try {
+        // Conexión a la base de datos
+        ConectionMysql con = new ConectionMysql();
+        cn = con.conectar();
+
+        // Preparar la consulta SQL
+        String sql = "INSERT INTO solicitudes (tipo_solicitud, nombre_cliente, numero_habitacion, descripcion, fecha_solicitud, estado) VALUES (?, ?, ?, ?, ?, ?)";
+        PreparedStatement pst = cn.prepareStatement(sql);
+        
+        // Establecer los valores
+        pst.setString(1, controlador.getTipoSolicitud());
+        pst.setString(2, controlador.getNombreCliente());
+        pst.setString(3, controlador.getNumeroHabitacion());
+        pst.setString(4, controlador.getDescripcion());
+        pst.setDate(5, new java.sql.Date(controlador.getFechaSolicitud().getTime()));
+        pst.setString(6, controlador.getEstado());
+
+        // Ejecutar la consulta
+        pst.executeUpdate();
+    } catch (Exception e) {
+        // Manejar errores
+        JOptionPane.showMessageDialog(this, "Error al guardar la solicitud en la base de datos: " + e.getMessage());
+    } finally {
+        // Cerrar la conexión
+        if (cn != null) {
+            try {
+                cn.close();
+            } catch (Exception e) {
+                // Manejar errores al cerrar la conexión
+                JOptionPane.showMessageDialog(this, "Error al cerrar la conexión a la base de datos: " + e.getMessage());
+            }
+        }
+    }
+    }
+    private void limpiarCampos() {
+    ComboLimpieza.setSelectedIndex(0); // Poner el combo en su primer ítem (o como desees)
+    NumeroHabitacion.setText(""); // Limpiar el campo de número de habitación
+    RecomendacionesTxt.setText(""); // Limpiar el campo de recomendaciones
+    // Otros campos que necesites limpiar
+    }
+
+    
+
+   
+    
+
+    
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,13 +96,14 @@ public class solicitudes_en_el_hotel extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        ComboLimpieza = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        NumeroHabitacion = new javax.swing.JTextField();
+        RecomendacionesTxt = new javax.swing.JTextField();
+        EnviarSolicitud = new javax.swing.JButton();
+        InicioHomeee = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -42,7 +111,12 @@ public class solicitudes_en_el_hotel extends javax.swing.JFrame {
 
         jPanel1.setName("solicitudes"); // NOI18N
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Limpieza", "Mantenimiento", "Recepcion", "Solucion de problemas de seguridad", " " }));
+        ComboLimpieza.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Limpieza", "Mantenimiento", "Recepcion", "Solucion de problemas de seguridad", " " }));
+        ComboLimpieza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboLimpiezaActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Que tipo de solicitud desea?");
 
@@ -50,22 +124,29 @@ public class solicitudes_en_el_hotel extends javax.swing.JFrame {
 
         jLabel4.setText("recomendaciones:");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        NumeroHabitacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                NumeroHabitacionActionPerformed(evt);
             }
         });
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        RecomendacionesTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                RecomendacionesTxtActionPerformed(evt);
             }
         });
 
-        jButton1.setText("ENVIAR SOLICITUD");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        EnviarSolicitud.setText("Enviar Solicitud");
+        EnviarSolicitud.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                EnviarSolicitudActionPerformed(evt);
+            }
+        });
+
+        InicioHomeee.setText("Volver al Inicio");
+        InicioHomeee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InicioHomeeeActionPerformed(evt);
             }
         });
 
@@ -75,28 +156,30 @@ public class solicitudes_en_el_hotel extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jComboBox1, 0, 0, Short.MAX_VALUE)))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(48, 48, 48)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addGap(10, 10, 10)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jLabel4)
+                                .addGap(10, 10, 10))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(133, 133, 133)
-                        .addComponent(jButton1)))
-                .addContainerGap(23, Short.MAX_VALUE))
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(EnviarSolicitud)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(ComboLimpieza, 0, 0, Short.MAX_VALUE)))))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(NumeroHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(RecomendacionesTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(InicioHomeee)))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,18 +187,20 @@ public class solicitudes_en_el_hotel extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ComboLimpieza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(NumeroHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(53, 53, 53))
+                    .addComponent(RecomendacionesTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EnviarSolicitud)
+                    .addComponent(InicioHomeee))
+                .addGap(49, 49, 49))
         );
 
         jPanel2.setBackground(new java.awt.Color(0, 204, 204));
@@ -165,18 +250,58 @@ public class solicitudes_en_el_hotel extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    private void NumeroHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NumeroHabitacionActionPerformed
+       
+    }//GEN-LAST:event_NumeroHabitacionActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void ComboLimpiezaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboLimpiezaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+        
+         
+    }//GEN-LAST:event_ComboLimpiezaActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void RecomendacionesTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RecomendacionesTxtActionPerformed
         // TODO add your handling code here:
-        this.dispose(); 
-    }//GEN-LAST:event_jButton1ActionPerformed
+        
+    }//GEN-LAST:event_RecomendacionesTxtActionPerformed
+
+    private void EnviarSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnviarSolicitudActionPerformed
+        // TODO add your handling code here:
+        try {
+        // Obtener datos del formulario
+        String tipoSolicitud = ComboLimpieza.getSelectedItem().toString();
+        String numeroHabitacion = NumeroHabitacion.getText();
+        String recomendaciones = RecomendacionesTxt.getText();
+        Date fechaSolicitud = new Date(); // Usar la fecha actual
+        String estado = "Pendiente"; // Establecer un estado por defecto
+        String nombreCliente = "Nombre del Cliente"; // Debes obtener este dato desde el formulario si tienes el campo
+
+        // Crear objeto Solicitud
+        Solicitud solicitud = new Solicitud(tipoSolicitud, nombreCliente, numeroHabitacion, recomendaciones, fechaSolicitud, estado);
+
+        // Crear controlador y guardar solicitud en la base de datos
+        SolicitudControlador controlador = new SolicitudControlador(solicitud);
+        guardarSolicitudEnBD(controlador);
+
+        // Mostrar mensaje de éxito
+        JOptionPane.showMessageDialog(this, "Solicitud enviada correctamente.");
+        
+        // Limpiar los campos del formulario
+        limpiarCampos();
+        } catch (Exception e) {
+        // Manejar errores
+        JOptionPane.showMessageDialog(this, "Error al enviar la solicitud: " + e.getMessage());
+        }
+    }//GEN-LAST:event_EnviarSolicitudActionPerformed
+
+    private void InicioHomeeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InicioHomeeeActionPerformed
+        // TODO add your handling code here:
+        InicioHome n1 = new InicioHome();
+        n1.setVisible(true);
+        n1.setLocationRelativeTo(null); // Centrar la nueva ventana en la pantalla
+        // Cerrar la ventana actual
+        this.dispose();
+    }//GEN-LAST:event_InicioHomeeeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -184,15 +309,19 @@ public class solicitudes_en_el_hotel extends javax.swing.JFrame {
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> ComboLimpieza;
+    private javax.swing.JButton EnviarSolicitud;
+    private javax.swing.JButton InicioHomeee;
+    private javax.swing.JTextField NumeroHabitacion;
+    private javax.swing.JTextField RecomendacionesTxt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
+    
+  
 }
+

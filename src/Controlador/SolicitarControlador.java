@@ -26,6 +26,7 @@ public class SolicitarControlador {
         solicitarModelo.actualizarEstado(solicitud, nuevoEstado);
     }
 
+    
     // Método para obtener solicitudes por cliente
     public List<Solicitud> obtenerSolicitudesPorCliente(Cliente cliente) {
         return solicitarModelo.obtenerSolicitudesPorCliente(cliente);

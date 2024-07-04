@@ -98,11 +98,12 @@ public class consultar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        InicioHome principal = new InicioHome();
-        principal.setVisible(true);
-        principal.setLocationRelativeTo(null); 
-        this.dispose(); // Cierra la ventana actual
+               // TODO add your handling code here:
+        InicioHome n1 = new InicioHome();
+        n1.setVisible(true);
+        n1.setLocationRelativeTo(null); // Centrar la nueva ventana en la pantalla
+        // Cerrar la ventana actual
+        this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

@@ -4,19 +4,22 @@ import java.util.Date;
 
 public class Solicitud {
     private String tipoSolicitud;
-    private Cliente cliente;
+    private String nombreCliente; // Nombre del cliente
+    private String numeroHabitacion; // Número de habitación del cliente
     private String descripcion;
     private Date fechaSolicitud;
     private String estado;
 
-    public Solicitud(String tipoSolicitud, Cliente cliente, String descripcion, Date fechaSolicitud, String estado) {
+    public Solicitud(String tipoSolicitud, String nombreCliente, String numeroHabitacion, String descripcion, Date fechaSolicitud, String estado) {
         this.tipoSolicitud = tipoSolicitud;
-        this.cliente = cliente;
+        this.nombreCliente = nombreCliente;
+        this.numeroHabitacion = numeroHabitacion;
         this.descripcion = descripcion;
         this.fechaSolicitud = fechaSolicitud;
         this.estado = estado;
     }
 
+    // Getters y setters
     public String getTipoSolicitud() {
         return tipoSolicitud;
     }
@@ -25,12 +28,20 @@ public class Solicitud {
         this.tipoSolicitud = tipoSolicitud;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public String getNombreCliente() {
+        return nombreCliente;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setNombreCliente(String nombreCliente) {
+        this.nombreCliente = nombreCliente;
+    }
+
+    public String getNumeroHabitacion() {
+        return numeroHabitacion;
+    }
+
+    public void setNumeroHabitacion(String numeroHabitacion) {
+        this.numeroHabitacion = numeroHabitacion;
     }
 
     public String getDescripcion() {

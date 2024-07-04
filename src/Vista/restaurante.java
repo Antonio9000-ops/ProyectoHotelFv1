@@ -104,11 +104,12 @@ public class restaurante extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        InicioHome principal = new InicioHome();
-        principal.setVisible(true);
-        principal.setLocationRelativeTo(null); 
-        this.dispose(); // Cierra la ventana actual
+       
+        InicioHome n1 = new InicioHome();
+        n1.setVisible(true);
+        n1.setLocationRelativeTo(null); // Centrar la nueva ventana en la pantalla
+        // Cerrar la ventana actual
+        this.dispose();
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

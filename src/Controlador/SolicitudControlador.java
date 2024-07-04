@@ -1,21 +1,14 @@
 package Controlador;
 
-import Modelo.Cliente;
 import Modelo.Solicitud;
 import java.util.Date;
 
-// Definición de la clase SolicitudControlador
 public class SolicitudControlador {
-    private Solicitud solicitudModelo; // Modelo Solicitud para interactuar con los datos
+    private Solicitud solicitudModelo;
 
-    // Constructor de la clase SolicitudControlador
     public SolicitudControlador(Solicitud solicitudModelo) {
-        this.solicitudModelo = solicitudModelo; // Inicializa el modelo Solicitud
+        this.solicitudModelo = solicitudModelo;
     }
-
-    // Métodos para interactuar con el modelo Solicitud
-
-    // Getters y setters para los atributos de la solicitud
 
     public String getTipoSolicitud() {
         return solicitudModelo.getTipoSolicitud();
@@ -25,12 +18,20 @@ public class SolicitudControlador {
         solicitudModelo.setTipoSolicitud(tipoSolicitud);
     }
 
-    public Cliente getCliente() {
-        return solicitudModelo.getCliente();
+    public String getNombreCliente() {
+        return solicitudModelo.getNombreCliente();
     }
 
-    public void setCliente(Cliente cliente) {
-        solicitudModelo.setCliente(cliente);
+    public void setNombreCliente(String nombreCliente) {
+        solicitudModelo.setNombreCliente(nombreCliente);
+    }
+
+    public String getNumeroHabitacion() {
+        return solicitudModelo.getNumeroHabitacion();
+    }
+
+    public void setNumeroHabitacion(String numeroHabitacion) {
+        solicitudModelo.setNumeroHabitacion(numeroHabitacion);
     }
 
     public String getDescripcion() {

@@ -20,7 +20,7 @@ public class Solicitar {
 
     public void crearSolicitud(Solicitud solicitud) {
         solicitudes.add(solicitud);
-        System.out.println("Solicitud creada para el cliente: " + solicitud.getCliente().getNombre());
+        System.out.println("Solicitud creada para el cliente: " + solicitud.getNombreCliente());
     }
 
     public void actualizarEstado(Solicitud solicitud, String nuevoEstado) {
@@ -28,10 +28,10 @@ public class Solicitar {
         System.out.println("Estado de la solicitud actualizado a: " + nuevoEstado);
     }
 
-    public List<Solicitud> obtenerSolicitudesPorCliente(Cliente cliente) {
+    public List<Solicitud> obtenerSolicitudesPorCliente(Cliente nombreCliente) {
         List<Solicitud> solicitudesCliente = new ArrayList<>();
         for (Solicitud solicitud : solicitudes) {
-            if (solicitud.getCliente().equals(cliente)) {
+            if (solicitud.getNombreCliente().equals(nombreCliente)) {
                 solicitudesCliente.add(solicitud);
             }
         }

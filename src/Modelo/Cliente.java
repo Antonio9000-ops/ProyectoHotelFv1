@@ -18,6 +18,7 @@ public class Cliente {
     private List<Pago> pagos;
     private List<Reporte> reportes;
     private List<Empleado> empleados;
+    private int numeroHabitacion; 
 
     // Constructor vacío para crear un cliente sin parámetros
     public Cliente() {}
@@ -119,6 +120,13 @@ public class Cliente {
     }
 
     // Getters y setters para los atributos del cliente
+     public int getNumeroHabitacion() {
+        return numeroHabitacion;
+    }
+
+    public void setNumeroHabitacion(int numeroHabitacion) {
+        this.numeroHabitacion = numeroHabitacion;
+    }
 
     public String getNombre() {
         return nombre;

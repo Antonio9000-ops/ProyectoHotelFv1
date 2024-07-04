@@ -216,6 +216,8 @@ public class InicioHome extends javax.swing.JFrame {
     consultar consultas = new consultar(); // Cambia true a false para que no sea modal
     consultas.setVisible(true);
     setLocationRelativeTo(null);
+    this.dispose(); // Cierra la ventana actual    
+    
     }//GEN-LAST:event_jButton6ActionPerformed
 
     
