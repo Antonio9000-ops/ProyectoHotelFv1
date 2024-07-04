@@ -8,7 +8,7 @@ import java.util.List;
 
 // Definición de la clase ReporteControlador
 public class ReporteControlador {
-    private Reporte reporteModelo; // Modelo Reporte para interactuar con los datos
+    private Reporte reporteModelo; 
 
     // Constructor de la clase ReporteControlador
     public ReporteControlador(Reporte reporteModelo) {
@@ -19,22 +19,22 @@ public class ReporteControlador {
 
     // Método para generar un reporte
     public void generarReporte() {
-        reporteModelo.generarReporte(); // Llama al método generarReporte del modelo
+        reporteModelo.generarReporte(); 
     }
 
     // Método para agregar un detalle al reporte
     public void agregarDetalle(String detalle) {
-        reporteModelo.agregarDetalle(detalle); // Llama al método agregarDetalle del modelo
+        reporteModelo.agregarDetalle(detalle); 
     }
 
     // Método para obtener el reporte en formato de cadena
     public String obtenerReporte() {
-        return reporteModelo.obtenerReporte(); // Llama al método obtenerReporte del modelo
+        return reporteModelo.obtenerReporte(); 
     }
 
     // Método para obtener reportes por fecha
     public List<Reporte> obtenerReportesPorFecha(List<Reporte> reportes, Date fecha) {
-        return Reporte.obtenerReportesPorFecha(reportes, fecha); // Llama al método obtenerReportesPorFecha del modelo
+        return Reporte.obtenerReportesPorFecha(reportes, fecha);
     }
 
     // Getters y setters para los atributos de la clase Reporte

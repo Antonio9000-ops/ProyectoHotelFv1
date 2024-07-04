@@ -233,12 +233,12 @@ public class InicioHotel extends javax.swing.JFrame {
             ResultSet rs = ps.executeQuery();
             
             if(rs.next()) {
-                // Credenciales correctas, abrir la ventana InicioHome
+                
                 InicioHome home = new InicioHome();
                 home.setVisible(true);
                 this.dispose(); // Cierra la ventana actual
             } else {
-                // Credenciales incorrectas
+                
                 JOptionPane.showMessageDialog(null, "Correo o contraseña incorrectos");
             }
         } catch (Exception e) {

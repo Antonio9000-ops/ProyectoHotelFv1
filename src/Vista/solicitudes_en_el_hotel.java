@@ -56,35 +56,25 @@ public class solicitudes_en_el_hotel extends javax.swing.JFrame {
         // Ejecutar la consulta
         pst.executeUpdate();
     } catch (Exception e) {
-        // Manejar errores
         JOptionPane.showMessageDialog(this, "Error al guardar la solicitud en la base de datos: " + e.getMessage());
     } finally {
-        // Cerrar la conexión
+        
         if (cn != null) {
             try {
                 cn.close();
             } catch (Exception e) {
-                // Manejar errores al cerrar la conexión
+                
                 JOptionPane.showMessageDialog(this, "Error al cerrar la conexión a la base de datos: " + e.getMessage());
             }
         }
     }
     }
     private void limpiarCampos() {
-    ComboLimpieza.setSelectedIndex(0); // Poner el combo en su primer ítem (o como desees)
-    NumeroHabitacion.setText(""); // Limpiar el campo de número de habitación
-    RecomendacionesTxt.setText(""); // Limpiar el campo de recomendaciones
-    // Otros campos que necesites limpiar
+    ComboLimpieza.setSelectedIndex(0); 
+    NumeroHabitacion.setText(""); 
+    RecomendacionesTxt.setText(""); 
+    
     }
-
-    
-
-   
-    
-
-    
-
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -279,17 +269,17 @@ public class solicitudes_en_el_hotel extends javax.swing.JFrame {
         // Crear objeto Solicitud
         Solicitud solicitud = new Solicitud(tipoSolicitud, nombreCliente, numeroHabitacion, recomendaciones, fechaSolicitud, estado);
 
-        // Crear controlador y guardar solicitud en la base de datos
+        
         SolicitudControlador controlador = new SolicitudControlador(solicitud);
         guardarSolicitudEnBD(controlador);
 
-        // Mostrar mensaje de éxito
+     
         JOptionPane.showMessageDialog(this, "Solicitud enviada correctamente.");
         
-        // Limpiar los campos del formulario
+       
         limpiarCampos();
         } catch (Exception e) {
-        // Manejar errores
+      
         JOptionPane.showMessageDialog(this, "Error al enviar la solicitud: " + e.getMessage());
         }
     }//GEN-LAST:event_EnviarSolicitudActionPerformed
@@ -299,7 +289,6 @@ public class solicitudes_en_el_hotel extends javax.swing.JFrame {
         InicioHome n1 = new InicioHome();
         n1.setVisible(true);
         n1.setLocationRelativeTo(null); // Centrar la nueva ventana en la pantalla
-        // Cerrar la ventana actual
         this.dispose();
     }//GEN-LAST:event_InicioHomeeeActionPerformed
 

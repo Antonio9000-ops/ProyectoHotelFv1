@@ -5,14 +5,12 @@ import Modelo.Servicio;
 
 // Definición de la clase ServicioControlador
 public class ServicioControlador {
-    private Servicio servicioModelo; // Modelo Servicio para interactuar con los datos
+    private Servicio servicioModelo; // Modelo Servicio 
 
     // Constructor de la clase ServicioControlador
     public ServicioControlador(Servicio servicioModelo) {
         this.servicioModelo = servicioModelo; // Inicializa el modelo Servicio
     }
-
-    // Métodos para interactuar con el modelo Servicio
 
     // Método para obtener el detalle del servicio
     public String obtenerDetalleServicio() {

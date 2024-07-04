@@ -111,8 +111,7 @@ public class detallesDeReserva extends javax.swing.JFrame {
        PagoDeReserva pagar = new PagoDeReserva();
         pagar.setVisible(true);
         pagar.setLocationRelativeTo(null);
-        this.dispose(); // Cierra la ventana actual
-       
+        this.dispose(); 
     }//GEN-LAST:event_jButton1ActionPerformed
 
  

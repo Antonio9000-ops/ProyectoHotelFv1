@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
+
 package Vista;
 
 import javax.swing.JButton;
@@ -27,9 +24,7 @@ import javax.swing.JOptionPane;
  */
 public class ReservaCuarto extends javax.swing.JDialog {
 
-    /**
-     * Creates new form fm_Reservarcuarto
-     */
+    
     
     private ReservaControlador reservaControlador;
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -40,7 +35,7 @@ public class ReservaCuarto extends javax.swing.JDialog {
        
         initComponents();
         setLocationRelativeTo(null);
-        init(); // Inicializar el controlador aquí
+        init(); 
         configureEvents();
     }
     private void init() {
@@ -520,17 +515,16 @@ public class ReservaCuarto extends javax.swing.JDialog {
         Date fechaSalida = java.sql.Date.valueOf(FechaSalidaTxt.getText());
         int numeroPersonas = Integer.parseInt(NumeroPersonaTxt.getText());
     
-        // Crear un nuevo objeto Cliente (debes tener la clase Cliente implementada)
+        
         Cliente cliente = new Cliente(nombre, telefono, correo);
     
-    // Crear un nuevo objeto Reserva y su controlador
+    
         Reserva reserva = new Reserva(fechaLlegada, fechaSalida, numeroPersonas, "Pendiente", cliente, null);
         ReservaControlador controlador = new ReservaControlador(reserva);
     
-    // Llamar al método para crear la reserva
+    
         controlador.crearReserva();
     
-    // Guardar la reserva en la base de datos
         guardarReserva(nombre, telefono, correo, fechaLlegada, fechaSalida, numeroPersonas);
         
         

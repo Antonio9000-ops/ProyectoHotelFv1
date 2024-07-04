@@ -20,26 +20,26 @@ public class ReservaControlador {
 
     // Método para crear una reserva
     public void crearReserva() {
-        reservaModelo.crearReserva(); // Llama al método crearReserva del modelo
+        reservaModelo.crearReserva(); 
     }
 
     // Método para cancelar una reserva
     public void cancelarReserva() {
-        reservaModelo.cancelarReserva(); // Llama al método cancelarReserva del modelo
+        reservaModelo.cancelarReserva(); 
     }
 
     // Método para obtener la lista de reservas
     public List<Reserva> obtenerReservas(List<Reserva> reservas) {
-        return Reserva.obtenerReservas(reservas); // Llama al método obtenerReservas del modelo
+        return Reserva.obtenerReservas(reservas); 
     }
 
     // Métodos adicionales para la relación con pagos
     public void agregarPago(Pago pago) {
-        reservaModelo.agregarPago(pago); // Llama al método agregarPago del modelo
+        reservaModelo.agregarPago(pago); 
     }
 
     public List<Pago> obtenerPagos() {
-        return reservaModelo.obtenerPagos(); // Llama al método obtenerPagos del modelo
+        return reservaModelo.obtenerPagos(); 
     }
 
     // Getters y setters para los atributos de la clase Reserva

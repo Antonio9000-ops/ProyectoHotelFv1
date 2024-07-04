@@ -98,16 +98,16 @@ public class consultar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-               // TODO add your handling code here:
+               
         InicioHome n1 = new InicioHome();
         n1.setVisible(true);
-        n1.setLocationRelativeTo(null); // Centrar la nueva ventana en la pantalla
-        // Cerrar la ventana actual
+        n1.setLocationRelativeTo(null); 
+        
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+      
         String url = "https://api.whatsapp.com/send?phone=NUMERO_DE_TELEFONO";
     
         try {
@@ -115,7 +115,7 @@ public class consultar extends javax.swing.JFrame {
         } catch (java.io.IOException e) {
         System.out.println("No disponible");
         
-        // Aquí puedes manejar la excepción como desees
+        
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

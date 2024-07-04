@@ -4,18 +4,18 @@ import Modelo.Platillo;
 
 // Definición de la clase PlatilloControlador
 public class PlatilloControlador {
-    private Platillo platilloModelo; // Modelo Platillo para interactuar con los datos
+    private Platillo platilloModelo; 
 
     // Constructor de la clase PlatilloControlador
     public PlatilloControlador(Platillo platilloModelo) {
-        this.platilloModelo = platilloModelo; // Inicializa el modelo Platillo
+        this.platilloModelo = platilloModelo; 
     }
 
     // Métodos para interactuar con el modelo Platillo
 
     // Método para obtener el nombre del platillo
     public String obtenerNombre() {
-        return platilloModelo.getNombre(); // Devuelve el nombre del platillo desde el modelo
+        return platilloModelo.getNombre(); // 
     }
 
     // Método para establecer el nombre del platillo
@@ -25,7 +25,7 @@ public class PlatilloControlador {
 
     // Método para obtener la descripción del platillo
     public String obtenerDescripcion() {
-        return platilloModelo.getDescripcion(); // Devuelve la descripción del platillo desde el modelo
+        return platilloModelo.getDescripcion(); 
     }
 
     // Método para establecer la descripción del platillo

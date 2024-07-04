@@ -10,7 +10,7 @@ import java.util.List;
 
 // Definición de la clase RestauranteBarTiendaControlador
 public class RestauranteBarTiendaControlador {
-    private RestauranteBarTienda restauranteBarTiendaModelo; // Modelo RestauranteBarTienda para interactuar con los datos
+    private RestauranteBarTienda restauranteBarTiendaModelo; 
 
     // Constructor de la clase RestauranteBarTiendaControlador
     public RestauranteBarTiendaControlador(RestauranteBarTienda restauranteBarTiendaModelo) {

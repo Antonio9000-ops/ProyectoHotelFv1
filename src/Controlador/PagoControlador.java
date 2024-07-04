@@ -12,7 +12,7 @@ import java.util.List;
 
 // Definición de la clase PagoControlador
 public class PagoControlador {
-    private Pago pagoModelo; // Modelo Pago para interactuar con los datos
+    private Pago pagoModelo; 
 
     // Constructor de la clase PagoControlador
     public PagoControlador(Pago pagoModelo) {

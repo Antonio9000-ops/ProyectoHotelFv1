@@ -20,8 +20,6 @@ public class Cliente {
     private List<Empleado> empleados;
     private int numeroHabitacion; 
 
-    // Constructor vacío para crear un cliente sin parámetros
-    public Cliente() {}
 
     // Constructor de la clase Cliente
     public Cliente(String nombre, String apellido, String direccion, String telefono, String email, Login login, Hotel hotel) {
@@ -39,7 +37,7 @@ public class Cliente {
         this.reportes = new ArrayList<>();
         this.empleados = new ArrayList<>();
     }
-    // Constructor básico para casos donde solo se tienen los datos esenciales
+   
     public Cliente(String nombre, String telefono, String email) {
     this.nombre = nombre;
     this.telefono = telefono;
@@ -51,6 +49,9 @@ public class Cliente {
     this.pagos = new ArrayList<>();
     this.reportes = new ArrayList<>();
     this.empleados = new ArrayList<>();
+    }
+    public Cliente( ){
+        
     }
 
     // Métodos de la clase Cliente

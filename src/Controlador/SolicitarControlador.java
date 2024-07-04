@@ -7,14 +7,13 @@ import java.util.List;
 
 // Definición de la clase SolicitarControlador
 public class SolicitarControlador {
-    private Solicitar solicitarModelo; // Modelo Solicitar para interactuar con los datos
+    private Solicitar solicitarModelo; // 
 
     // Constructor de la clase SolicitarControlador
     public SolicitarControlador(Solicitar solicitarModelo) {
         this.solicitarModelo = solicitarModelo; // Inicializa el modelo Solicitar
     }
 
-    // Métodos para interactuar con el modelo Solicitar
 
     // Método para crear una solicitud
     public void crearSolicitud(Solicitud solicitud) {

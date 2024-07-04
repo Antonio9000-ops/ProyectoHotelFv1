@@ -25,7 +25,7 @@ public class admi_inicia_sesion extends javax.swing.JFrame {
     }
 
     admi_inicia_sesion(InicioHotel aThis, boolean b) {
-        setLocationRelativeTo(null); // Asegura que la ventana aparezca centrada en la pantalla
+        setLocationRelativeTo(null); 
         this.setVisible(true);
     }
 
@@ -129,14 +129,14 @@ public class admi_inicia_sesion extends javax.swing.JFrame {
         // Contraseña del admin definida
         String adminContraseña = "123456789";
         
-        // Verificar si la contraseña ingresada coincide con la contraseña del admin
+        
         if (contraseña.equals(adminContraseña)) {
-            // Contraseña correcta, abrir la ventana InicioHome
+            
             InicioHome home = new InicioHome();
             home.setVisible(true);
             this.dispose(); // Cierra la ventana actual
         } else {
-            // Contraseña incorrecta
+            
             JOptionPane.showMessageDialog(null, "Contraseña incorrecta");
         }
     }

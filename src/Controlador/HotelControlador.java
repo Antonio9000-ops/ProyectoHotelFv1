@@ -10,7 +10,7 @@ import java.util.List;
 
 // Definición de la clase HotelControlador
 public class HotelControlador {
-    private Hotel hotelModelo; // Modelo Hotel para interactuar con los datos
+    private Hotel hotelModelo; 
 
     // Constructor de la clase HotelControlador
     public HotelControlador(Hotel hotelModelo) {

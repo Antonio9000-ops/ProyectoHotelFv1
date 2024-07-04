@@ -91,7 +91,7 @@ public pago_exito (){
        InicioHome principal = new InicioHome();
         principal.setVisible(true);
         principal.setLocationRelativeTo(null); 
-        this.dispose(); // Cierra la ventana actual
+        this.dispose(); 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

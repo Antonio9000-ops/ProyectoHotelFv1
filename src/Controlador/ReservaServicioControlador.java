@@ -6,7 +6,7 @@ import java.util.Date;
 
 // Definición de la clase ReservaServicioControlador
 public class ReservaServicioControlador {
-    private ReservaServicio reservaServicioModelo; // Modelo ReservaServicio para interactuar con los datos
+    private ReservaServicio reservaServicioModelo; 
 
     // Constructor de la clase ReservaServicioControlador
     public ReservaServicioControlador(ReservaServicio reservaServicioModelo) {
