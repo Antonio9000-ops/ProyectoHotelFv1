@@ -65,7 +65,7 @@
                           <Component id="jLabel1" min="-2" pref="145" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="419" max="32767" attributes="0"/>
+                  <EmptySpace pref="417" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -94,11 +94,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="whatsapp"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton3">
           <Properties>
             <Property name="text" type="java.lang.String" value="MENU PRINCIPAL"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

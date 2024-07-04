@@ -39,8 +39,18 @@ public class consultar extends javax.swing.JFrame {
         jLabel1.setText("consultas al whatsapp");
 
         jButton1.setText("whatsapp");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("MENU PRINCIPAL");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -56,7 +66,7 @@ public class consultar extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(444, 444, 444)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(419, Short.MAX_VALUE))
+                .addContainerGap(417, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -87,6 +97,27 @@ public class consultar extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        InicioHome principal = new InicioHome();
+        principal.setVisible(true);
+        principal.setLocationRelativeTo(null); 
+        this.dispose(); // Cierra la ventana actual
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String url = "https://api.whatsapp.com/send?phone=NUMERO_DE_TELEFONO";
+    
+        try {
+        java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
+        } catch (java.io.IOException e) {
+        System.out.println("No disponible");
+        
+        // Aquí puedes manejar la excepción como desees
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

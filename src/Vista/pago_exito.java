@@ -10,7 +10,7 @@ package Vista;
  */
 public class pago_exito extends javax.swing.JFrame {
 
-public pago_exito (PagoDeReserva aThis, boolean par){
+public pago_exito (){
  	initComponents();
         setLocationRelativeTo(null); 
         this.setVisible(true);
@@ -89,8 +89,9 @@ public pago_exito (PagoDeReserva aThis, boolean par){
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        InicioHome principal = new InicioHome();
-       principal.setVisible(true);
-       setLocationRelativeTo(null); 
+        principal.setVisible(true);
+        principal.setLocationRelativeTo(null); 
+        this.dispose(); // Cierra la ventana actual
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

@@ -18,15 +18,10 @@ public class PagoDeReserva extends javax.swing.JFrame {
         initComponents();
         setTitle("ventana_de_pago");
         setLocationRelativeTo(null);
+        this.setVisible(true); // Asegurar que la ventana es visible
     }
 
-    public PagoDeReserva(detallesDeReserva aThis, boolean b) {
-    setLocationRelativeTo(null); // Asegura que la ventana aparezca centrada en la pantalla
-    this.setVisible(true); // Hace visible esta ventana
-    setSize(1039, 775);
-    //aThis.setVisible(false); // Oculta la ventana aThis
-}
-
+  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -209,6 +204,11 @@ public class PagoDeReserva extends javax.swing.JFrame {
         });
 
         jButton2.setText("VOLVER");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -258,9 +258,11 @@ public class PagoDeReserva extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    pago_exito Pago = new pago_exito (this, false); // Cambia true a false para que no sea modal
+    pago_exito Pago = new pago_exito ();
     Pago.setVisible(true);
     setLocationRelativeTo(null);
+    this.dispose(); 
+    
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -278,6 +280,14 @@ public class PagoDeReserva extends javax.swing.JFrame {
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        detallesDeReserva detalles = new detallesDeReserva();
+        detalles.setVisible(true);
+        detalles.setLocationRelativeTo(null);
+        this.dispose(); // Cierra la ventana actua
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

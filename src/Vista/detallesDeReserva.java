@@ -15,8 +15,8 @@ public class detallesDeReserva extends javax.swing.JFrame {
      */
     public detallesDeReserva() {
         initComponents();
-        setLocationRelativeTo(null); 
-        this.setVisible(false);
+        setLocationRelativeTo(null);
+        this.setVisible(true); 
         
     }
 
@@ -108,8 +108,10 @@ public class detallesDeReserva extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       PagoDeReserva pagar=new PagoDeReserva();
-       pagar.setVisible(true);
+       PagoDeReserva pagar = new PagoDeReserva();
+        pagar.setVisible(true);
+        pagar.setLocationRelativeTo(null);
+        this.dispose(); // Cierra la ventana actual
        
     }//GEN-LAST:event_jButton1ActionPerformed
 

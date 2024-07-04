@@ -15,6 +15,8 @@ public class restaurante extends javax.swing.JFrame {
      */
     public restaurante() {
         initComponents();
+        setTitle("Restaurante");
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -36,6 +38,11 @@ public class restaurante extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(1039, 775));
 
         jButton1.setText("MENU PRINCIPAL");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("WHATSAPP");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -53,7 +60,7 @@ public class restaurante extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addGap(80, 80, 80)
                 .addComponent(jButton2)
-                .addContainerGap(371, Short.MAX_VALUE))
+                .addContainerGap(369, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -84,8 +91,26 @@ public class restaurante extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+            // TODO add your handling code here:
+            String url = "https://api.whatsapp.com/send?phone=NUMERO_DE_TELEFONO";
+    
+        try {
+        java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
+        } catch (java.io.IOException e) {
+        System.out.println("No disponible");
+        
+        // Aquí puedes manejar la excepción como desees
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        InicioHome principal = new InicioHome();
+        principal.setVisible(true);
+        principal.setLocationRelativeTo(null); 
+        this.dispose(); // Cierra la ventana actual
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

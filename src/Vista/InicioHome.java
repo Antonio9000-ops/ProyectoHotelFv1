@@ -198,15 +198,17 @@ public class InicioHome extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-       restaurante restaurante = new restaurante(); // Cambia true a false para que no sea modal
+    restaurante restaurante = new restaurante(); // Cambia true a false para que no sea modal
     restaurante.setVisible(true);
     setLocationRelativeTo(null);
+    this.dispose(); 
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
        solicitudes_en_el_hotel solicitud = new solicitudes_en_el_hotel();
        solicitud.setVisible(true);
        setLocationRelativeTo(null);
+       this.dispose(); 
        
     }//GEN-LAST:event_jButton4ActionPerformed
 
